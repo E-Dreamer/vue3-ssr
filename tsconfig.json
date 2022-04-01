@@ -1,4 +1,9 @@
 {
+  "ts-node":{
+    "compilerOptions": {
+      "types": ["node"]
+    }
+  },
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",

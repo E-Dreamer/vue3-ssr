@@ -4,17 +4,28 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "ssr": "ts-node server.ts",
+    "lint": "vue-cli-service lint --fix",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build:client": "vue-cli-service build --dest dist/client",
+    "build:server": "cross-env SSR=1 vue-cli-service build --dest dist/server",
+    "build:ssr": "npm run build:client && npm run build:server"
   },
   "dependencies": {
+    "@vue/server-renderer": "^3.2.31",
+    "clean-webpack-plugin": "^4.0.0",
     "core-js": "^3.6.5",
-    "vue": "^3.0.0",
+    "cross-env": "^7.0.3",
+    "ts-node": "^10.7.0",
+    "vue": "^3.2.31",
     "vue-class-component": "^8.0.0-0",
-    "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
+    "vue-router": "^4.0.14",
+    "vuex": "^4.0.2",
+    "webpack-manifest-plugin": "4.1.1",
+    "webpack-node-externals": "^3.0.0"
   },
   "devDependencies": {
+    "@types/node": "^17.0.23",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "~4.5.13",
@@ -32,23 +43,6 @@
     "lint-staged": "^9.5.0",
     "prettier": "^2.2.1",
     "typescript": "~4.1.5"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended",
-      "@vue/typescript/recommended",
-      "@vue/prettier",
-      "@vue/prettier/@typescript-eslint"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 2020
-    },
-    "rules": {}
   },
   "browserslist": [
     "> 1%",
