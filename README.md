@@ -2,29 +2,36 @@
 
 ## Project setup
 ```
-npm install
+yarn 
 ```
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm run serve --- client 客户端
 ```
-
+```
+npm run ssr --- server 服务端
+```
 ### Compiles and minifies for production
 ```
-npm run build
+npm run build 打包客户端和服务端代码
 ```
-
+```
+npm run build:server 打包服务端代码
+```
+```
+npm run build:client 打包客户端代码
+```
 ### Lints and fixes files
 ```
 npm run lint
 ```
-
+### 特别注意 webpack-manifest-plugin 该插件 使用4.x版本 5.x是webpack5.x的
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
-组件 asyncData()
+```组件 asyncData()
 // 最普通的用法也就这样了，在这里面去触发 action 请求接口
 asyncData(store: any, route: any) {
     return store.dispatch("HomeMv/getMvListRequest", {
@@ -58,4 +65,4 @@ async getMvUrl(store?: any, route?: any) {
     await store.dispatch("WatchMv/getMvUrlRequest", {
       id: mvid,
     });
-}
+}```

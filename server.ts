@@ -7,7 +7,6 @@ const manifest = require('./dist/server/ssr-manifest.json')
 const server = express()
 
 const appPath = path.join(__dirname, './dist', 'server', manifest['app.js'])
-console.log(appPath)
 const createApp = require(appPath).default
 
 server.use('/img', express.static(path.join(__dirname, './dist/client', 'img')))
@@ -28,6 +27,7 @@ server.get('*', async (req: any, res: any) => {
   //主动触发所有匹配的组件的asyncData函数
   Promise.all(
     matchedComponents.map((Component: any) => {
+      console.log(Component)
       // Component.component.default.methods.asyncData
       if (Component.asyncData) {
         return Component.asyncData({ store, route: router.currentRoute })
